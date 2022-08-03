@@ -43,9 +43,9 @@ public class LaptopService {
 
   public Laptop update(String id) {
     var toUpdate = laptopRepository.findById("L-" + id).orElseThrow();
-    toUpdate.setOs("UNIX");
     log.info("Before > laptop : {}", toUpdate);
 
+    toUpdate.setOs("UNIX");
     laptopRepository.saveWithProjection(toUpdate);
 
     log.info("After > laptop : {}", toUpdate);

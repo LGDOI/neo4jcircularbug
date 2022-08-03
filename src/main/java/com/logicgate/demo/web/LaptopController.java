@@ -3,6 +3,7 @@ package com.logicgate.demo.web;
 import com.logicgate.demo.model.Laptop;
 import com.logicgate.demo.service.LaptopService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ public class LaptopController {
     return laptopService.create(id);
   }
 
+  @PatchMapping
   public Laptop update(@RequestParam("id") String id) {
     return laptopService.update(id);
   }
