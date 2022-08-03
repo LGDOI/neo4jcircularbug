@@ -18,8 +18,15 @@ Run the following to start the webapp:
 ```
 
 ### Hitting the webapp
-Run the following to hit the webapp and trigger the error:
+Run the following to hit the webapp and may trigger the error:
 
 ```shell
-curl --location --request POST 'localhost:8080/api/object?id=10'
+
+for id in {1..50}; do
+  curl -XPOST "http://localhost:8080/api/laptop?id=${id}" | jq .
+done
+for id in {1..30}; do
+  curl -XPATCH "http://localhost:8080/api/laptop?id=${id}" | jq .
+done
+
 ```
