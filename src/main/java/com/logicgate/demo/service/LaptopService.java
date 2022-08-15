@@ -1,8 +1,6 @@
 package com.logicgate.demo.service;
 
-import com.logicgate.demo.model.Company;
-import com.logicgate.demo.model.Employee;
-import com.logicgate.demo.model.Laptop;
+import com.logicgate.demo.model.*;
 import com.logicgate.demo.repository.LaptopRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -20,23 +18,35 @@ public class LaptopService {
 
   public Laptop create(String id) {
     var employee = Employee.builder()
-        .id("E-" + id)
         .name("Dr. Whoo")
         .build();
 
+    employee.setId("E" + id);
+
     var company = Company.builder()
-        .id("C-" + id)
         .name("LogicGate")
         .employees(List.of(employee))
         .build();
 
+    company.setId("C" + id);
+
     employee.setCompany(company);
 
     var laptop = Laptop.builder()
-        .id("L-" + id)
         .os("DOS")
         .employee(employee)
         .build();
+
+    laptop.setId("L" + id);
+
+    var software = Software.builder()
+            .softwareName("Risk Cloud")
+            .manufacturer("Logicgate")
+            .laptop(List.of(laptop))
+            .build();
+
+    software.setId("Software" + id);
+    laptop.setSoftwareList(List.of(software));
 
     return laptopRepository.save(laptop);
   }

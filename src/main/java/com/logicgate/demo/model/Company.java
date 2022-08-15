@@ -18,11 +18,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @NoArgsConstructor
 @AllArgsConstructor
 @Node(primaryLabel = "Company")
-public class Company {
-
-  @Id
-  @Property(name = "id")
-  private String id;
+public class Company extends GraphEntity<Company> {
 
   @Property(name = "name")
   private String name;
@@ -39,16 +35,16 @@ public class Company {
       return false;
     }
     Company company = (Company) o;
-    return Objects.equals(id, company.id) && Objects.equals(name, company.name);
+    return Objects.equals(getId(), company.getId()) && Objects.equals(name, company.name);
   }
 
   @Override public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(getId(), name);
   }
 
   @Override public String toString() {
     return new StringJoiner(", ", Company.class.getSimpleName() + "[", "]")
-        .add("id='" + id + "'")
+        .add("id='" + getId() + "'")
         .add("name='" + name + "'")
         .toString();
   }

@@ -18,17 +18,16 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @NoArgsConstructor
 @AllArgsConstructor
 @Node(primaryLabel = "Employee")
-public class Employee {
-
-  @Id
-  @Property(name = "id")
-  private String id;
+public class Employee extends GraphEntity<Employee> {
 
   @Property(name = "name")
   private String name;
 
   @Relationship(value = "EMPLOY", direction = INCOMING)
   private Company company;
+
+  @Relationship(value = "HAS_PARKING_PASS")
+  private ParkingPass parkingPass;
 
   @Override public boolean equals(Object o) {
     if (this == o) {
@@ -38,16 +37,16 @@ public class Employee {
       return false;
     }
     Employee employee = (Employee) o;
-    return Objects.equals(id, employee.id) && Objects.equals(name, employee.name);
+    return Objects.equals(getId(), employee.getId()) && Objects.equals(name, employee.name);
   }
 
   @Override public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(getId(), name);
   }
 
   @Override public String toString() {
     return new StringJoiner(", ", Employee.class.getSimpleName() + "[", "]")
-        .add("id='" + id + "'")
+        .add("id='" + getId() + "'")
         .add("name='" + name + "'")
         .add("company=" + company)
         .toString();
