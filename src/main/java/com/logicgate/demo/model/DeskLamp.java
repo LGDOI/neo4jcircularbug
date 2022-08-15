@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Node(value = "DeskLamp")
+@Node(primaryLabel = "DeskLamp")
 public class DeskLamp extends GraphEntity<DeskLamp> {
 
     @Property(value = "brightness")

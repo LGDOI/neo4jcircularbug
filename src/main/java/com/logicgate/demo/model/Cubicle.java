@@ -8,7 +8,7 @@ import org.springframework.data.neo4j.core.schema.Property;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Node(value = "Cubicle")
+@Node(primaryLabel = "Cubicle")
 public class Cubicle extends Office {
 
     @Property(value = "width")

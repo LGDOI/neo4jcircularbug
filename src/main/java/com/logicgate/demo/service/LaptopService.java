@@ -37,7 +37,7 @@ public class LaptopService {
         .employee(employee)
         .build();
 
-    laptop.setId("L" + id);
+    laptop.setId("L-" + id);
 
     var software = Software.builder()
             .softwareName("Risk Cloud")

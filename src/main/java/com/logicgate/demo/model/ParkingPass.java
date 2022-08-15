@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Node(value = "ParkingPass")
+@Node(primaryLabel= "ParkingPass")
 public class ParkingPass extends GraphEntity<ParkingPass> {
 
     @Property(value = "parking_lot_numnber")

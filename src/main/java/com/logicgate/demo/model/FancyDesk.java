@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Node(value = "FancyDesk")
+@Node(primaryLabel = "FancyDesk")
 public class FancyDesk extends GraphEntity<FancyDesk> {
 
     @Relationship(value = "STORED_AT")

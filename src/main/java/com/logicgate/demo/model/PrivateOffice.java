@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Node(value = "PrivateOffice")
+@Node(primaryLabel = "PrivateOffice")
 public class PrivateOffice extends Office{
 
     @Property(value = "square_footage")

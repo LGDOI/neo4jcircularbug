@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Node(value = "Office")
+@Node(primaryLabel= "Office")
 public class Office extends GraphEntity<Office> {
 
     @Property(value = "office_number")
