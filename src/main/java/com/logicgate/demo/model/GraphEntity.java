@@ -6,7 +6,6 @@ import org.springframework.data.neo4j.core.schema.Property;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class GraphEntity<T extends GraphEntity> {
