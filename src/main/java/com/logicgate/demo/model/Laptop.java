@@ -1,5 +1,6 @@
 package com.logicgate.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
