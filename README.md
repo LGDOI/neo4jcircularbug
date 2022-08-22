@@ -16,12 +16,9 @@ Run the following to hit the webapp and may trigger the error:
 
 ```shell
 
-for id in {1..15000}; do
-  curl -s -XPOST "http://localhost:8080/api/laptop?id=${id}" | jq .
-done
-for id in {1..15000}; do
-  curl -s -XPATCH "http://localhost:8080/api/laptop?id=${id}" | jq .
-done
-
+curl -XPOST "http://localhost:8080/api/my?id=1"
+curl -XPOST "http://localhost:8080/api/my?id=unchecked"
+curl -XPOST "http://localhost:8080/api/my?id=checked"
+ 
 ```
 
