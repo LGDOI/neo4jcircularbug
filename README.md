@@ -16,13 +16,11 @@ Run the following to hit the webapp and may trigger the error:
 
 ```shell
 
-curl -XDELETE "http://localhost:8080/api/range"
-for id in {1..15}; do
-  curl -s -XPOST "http://localhost:8080/api/range?id=${id}" | jq .
-done
-for id in {1..15}; do
-  curl -s -XPATCH "http://localhost:8080/api/range?id=${id}" | jq .
-done
+./lazy.zsh <loop count>
+
+e.g.,
+
+./lazy.zsh 15
 
 ```
 
