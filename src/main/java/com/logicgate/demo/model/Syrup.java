@@ -3,6 +3,7 @@ package com.logicgate.demo.model;
 import static org.springframework.data.neo4j.core.schema.Relationship.Direction.INCOMING;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.StringJoiner;
 
 import lombok.*;
@@ -11,11 +12,11 @@ import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Getter
-@Builder
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Node(primaryLabel = "Employee")
-public class Syrup extends GraphEntity<Syrup> {
+public abstract class Syrup extends GraphEntity<Syrup> {
 
   @Property(name = "name")
   private String name;
@@ -49,5 +50,17 @@ public class Syrup extends GraphEntity<Syrup> {
 
   public void setWaffle(Waffle waffle) {
     this.waffle = waffle;
+  }
+
+  @NoArgsConstructor
+  @Node(primaryLabel = "Costco")
+  public static class Costco extends Syrup {
+
+  }
+
+  @NoArgsConstructor
+  @Node(primaryLabel = "Original")
+  public static class Original extends Syrup {
+
   }
 }

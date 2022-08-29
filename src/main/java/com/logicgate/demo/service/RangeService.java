@@ -1,6 +1,7 @@
 package com.logicgate.demo.service;
 
 import com.logicgate.demo.model.*;
+import com.logicgate.demo.model.Syrup.Original;
 import com.logicgate.demo.repository.RangeRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -17,17 +18,14 @@ public class RangeService {
   private final RangeRepository rangeRepository;
 
   public Range create(String id) {
-    var syrup = Syrup.builder()
-        .name("Costco")
-        .build();
 
+    var syrup = new Syrup.Costco();
+    syrup.setName("Costco");
     syrup.setId("syrup" + id);
 
-    var original = Syrup.builder()
-            .name("Walmart")
-            .build();
-
-    original.setId("syrup-org"+id);
+    var original = new Original();
+    original.setName("CostoSyrup");
+    original.setId("syrup-org" + id);
 
     var waffle = Waffle.builder()
         .name("LogicGate")
