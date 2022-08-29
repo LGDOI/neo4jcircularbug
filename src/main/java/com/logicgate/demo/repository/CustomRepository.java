@@ -1,7 +1,8 @@
 package com.logicgate.demo.repository;
 
-import com.logicgate.demo.model.Laptop;
+import com.logicgate.demo.model.Range;
 
 public interface CustomRepository {
-  Laptop saveWithProjection(Laptop laptop);
+  Range saveWithProjection(Range range);
+  void deleteAllNodes();
 }

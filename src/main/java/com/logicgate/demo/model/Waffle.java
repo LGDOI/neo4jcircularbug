@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -18,14 +17,14 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 @NoArgsConstructor
 @AllArgsConstructor
 @Node(primaryLabel = "Company")
-public class Company extends GraphEntity<Company> {
+public class Waffle extends GraphEntity<Waffle> {
 
   @Property(name = "name")
   private String name;
 
   @JsonIgnore
-  @Relationship("EMPLOY")
-  private List<Employee> employees;
+  @Relationship("CONTAINS")
+  private List<Syrup> syrups;
 
   @Override public boolean equals(Object o) {
     if (this == o) {
@@ -34,8 +33,8 @@ public class Company extends GraphEntity<Company> {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Company company = (Company) o;
-    return Objects.equals(getId(), company.getId()) && Objects.equals(name, company.name);
+    Waffle waffle = (Waffle) o;
+    return Objects.equals(getId(), waffle.getId()) && Objects.equals(name, waffle.name);
   }
 
   @Override public int hashCode() {
@@ -43,7 +42,7 @@ public class Company extends GraphEntity<Company> {
   }
 
   @Override public String toString() {
-    return new StringJoiner(", ", Company.class.getSimpleName() + "[", "]")
+    return new StringJoiner(", ", Waffle.class.getSimpleName() + "[", "]")
         .add("id='" + getId() + "'")
         .add("name='" + name + "'")
         .toString();

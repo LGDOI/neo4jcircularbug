@@ -24,6 +24,6 @@ public class Software extends GraphEntity<Software> {
 
     @JsonIgnore
     @Relationship(value = "INSTALLED_ON")
-    private List<Laptop> laptop;
+    private List<Range> range;
 
 }

@@ -11,21 +11,18 @@ import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Node(primaryLabel = "Employee")
-public class Employee extends GraphEntity<Employee> {
+public class Syrup extends GraphEntity<Syrup> {
 
   @Property(name = "name")
   private String name;
 
-  @Relationship(value = "EMPLOY", direction = INCOMING)
-  private Company company;
-
-  @Relationship(value = "HAS_LAPTOP", direction = INCOMING)
-  private Laptop laptop;
+  // Workflow
+  @Relationship(value = "CONTAINS", direction = INCOMING)
+  private Waffle waffle;
 
   @Override public boolean equals(Object o) {
     if (this == o) {
@@ -34,8 +31,8 @@ public class Employee extends GraphEntity<Employee> {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Employee employee = (Employee) o;
-    return Objects.equals(getId(), employee.getId()) && Objects.equals(name, employee.name);
+    Syrup syrup = (Syrup) o;
+    return Objects.equals(getId(), syrup.getId()) && Objects.equals(name, syrup.name);
   }
 
   @Override public int hashCode() {
@@ -43,14 +40,14 @@ public class Employee extends GraphEntity<Employee> {
   }
 
   @Override public String toString() {
-    return new StringJoiner(", ", Employee.class.getSimpleName() + "[", "]")
+    return new StringJoiner(", ", Syrup.class.getSimpleName() + "[", "]")
         .add("id='" + getId() + "'")
         .add("name='" + name + "'")
-        .add("company=" + company)
+        .add("company=" + waffle)
         .toString();
   }
 
-  public void setCompany(Company company) {
-    this.company = company;
+  public void setWaffle(Waffle waffle) {
+    this.waffle = waffle;
   }
 }
