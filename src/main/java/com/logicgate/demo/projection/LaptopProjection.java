@@ -5,13 +5,9 @@ import java.util.List;
 public interface LaptopProjection {
   String getOs();
   Employee getEmployee();
-  List<Software> getSoftware();
+  Employee getManager();
 
   interface Employee {
-    String getId();
-  }
-
-  interface Software {
     String getId();
   }
 

@@ -21,6 +21,9 @@ public class Laptop extends GraphEntity<Laptop> {
   @Property(name = "os")
   private String os;
 
+  @Relationship("ASSIGNED_BY")
+  private Employee manager;
+
   @Relationship("ASSIGNED_TO")
   private Employee employee;
 
@@ -47,6 +50,7 @@ public class Laptop extends GraphEntity<Laptop> {
         .add("id='" + getId() + "'")
         .add("os='" + os + "'")
         .add("employee=" + employee)
+            .add("manager=" + manager)
         .toString();
   }
 

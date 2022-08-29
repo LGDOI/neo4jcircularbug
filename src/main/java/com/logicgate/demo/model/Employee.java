@@ -4,16 +4,14 @@ import static org.springframework.data.neo4j.core.schema.Relationship.Direction.
 
 import java.util.Objects;
 import java.util.StringJoiner;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.neo4j.core.schema.Id;
+
+import lombok.*;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,8 +24,8 @@ public class Employee extends GraphEntity<Employee> {
   @Relationship(value = "EMPLOY", direction = INCOMING)
   private Company company;
 
-  @Relationship(value = "HAS_PARKING_PASS")
-  private ParkingPass parkingPass;
+  @Relationship(value = "HAS_LAPTOP", direction = INCOMING)
+  private Laptop laptop;
 
   @Override public boolean equals(Object o) {
     if (this == o) {

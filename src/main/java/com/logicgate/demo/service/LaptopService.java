@@ -23,6 +23,12 @@ public class LaptopService {
 
     employee.setId("E" + id);
 
+    var manager = Employee.builder()
+            .name("manager guy")
+            .build();
+
+    manager.setId("M"+id);
+
     var company = Company.builder()
         .name("LogicGate")
         .employees(List.of(employee))
@@ -34,10 +40,13 @@ public class LaptopService {
 
     var laptop = Laptop.builder()
         .os("DOS")
+            .manager(manager)
         .employee(employee)
         .build();
 
     laptop.setId("L-" + id);
+
+    employee.setLaptop(laptop);
 
     var software = Software.builder()
             .softwareName("Risk Cloud")
