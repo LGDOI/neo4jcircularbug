@@ -1,5 +1,8 @@
 package com.logicgate.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
 import lombok.AllArgsConstructor;
@@ -13,6 +16,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 
 // Record
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +33,10 @@ public class Range extends GraphEntity<Range> {
   // Step.Origin : origin
   @Relationship("CREATED_ON")
   private Syrup original;
+
+  @JsonIgnore
+  @Relationship(type = "HAS_CHILD")
+  private List<Range> ranges = new ArrayList<>();
 
   @Override public boolean equals(Object o) {
     if (this == o) {
@@ -52,9 +60,5 @@ public class Range extends GraphEntity<Range> {
         .add("syrup=" + syrup)
         .add("original=" + original)
         .toString();
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 }
